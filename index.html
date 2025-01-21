@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع كرة القدم الاحترافي</title>
+    <style>
+        /* إعدادات عامة */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ff6f61;
+            transform: scale(1.1);
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .home {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .home h2 {
+            font-size: 36px;
+            margin: 0;
+            animation: moveUp 2s ease-in-out infinite, changeColor 4s ease-in-out infinite;
+        }
+
+        .home p {
+            font-size: 20px;
+            margin: 10px 0;
+            animation: fadeIn 3s ease-in-out infinite;
+        }
+
+        @keyframes moveUp {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes changeColor {
+            0% { color: #8deb08; }
+            33% { color: #3498db; }
+            66% { color: #4718b5; }
+            100% { color: #b42d48; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .owner-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .owner-image:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .owner-name {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-buttons a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-buttons a.facebook {
+            background-color: #3b5998;
+        }
+
+        .social-buttons a:hover {
+            background-color: #ff6f61;
+            transform: scale(1.1);
+        }
+
+        .social-buttons a i {
+            margin-left: 10px;
+        }
+
+        .match-table table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .match-table th, .match-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .match-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .match-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff6f61;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+            }
+
+            .home h2 {
+                font-size: 28px;
+            }
+
+            .home p {
+                font-size: 18px;
+            }
+
+            .match-table table {
+                font-size: 14px;
+            }
+        }
+
+        .matches h2, .contact h2 {
+            font-size: 36px;
+            text-align: center;
+            color: #4CAF50;
+            margin: 30px 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            animation: changeColor 3s infinite;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Ragab Elwageh</h1>
+            </div>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#matches">الترتيب</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="home">
+        <div class="welcome-text">
+            <h2>Welcome To My Website</h2>
+            <p>كل ما تحتاج معرفته عن ترتيب القسم الرابع</p>
+            <div class="image-boxes">
+                <div class="image-box" onclick="showImage('WhatsApp%20Image%202025-01-10%20at%2014.40.13_976ff44d.jpg')">نادي بني سويف</div>
+                <div class="image-box" onclick="showImage('photo_2025-01-18_01-41-00.jpg')">المقاصه مباشر</div>
+                <div class="image-box" onclick="showImage('WhatsApp%20Image%202025-01-10%20at%2014.40.13_976ff44d.jpg')">المقاصه مباشر</div>
+        
+                
+                
+                
+        </div>
+    </section>
+
+    <section id="matches" class="matches">
+        <h2>ترتيب الفرق</h2>
+        <div class="match-table">
+            <table>
+                <!-- محتوى الجدول -->
+            </table>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <h2>للتواصل</h2>
+        <div class="owner-container">
+            <img src="images/photo_2025-01-18_01-41-00.jpg" alt="مالك الموقع" class="owner-image">
+            <div class="owner-name">Ragab Elwageh</div>
+            <div class="social-buttons">
+
+
+                <a href="https://wa.me/201271889673" target="_blank" class="whatsapp">
+                    واتساب <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100009692892743" target="_blank" class="facebook">
+                    فيسبوك <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 موقع كرة القدم. جميع الحقوق محفوظة.</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- لأيقونات الواتساب والفيسبوك -->
+    <script>
+        function openImage(imagePath) {
+            window.open(imagePath, '_blank');
+        }
+          // Show Image Function
+          function showImage(imageSrc) {
+                const image = new Image();
+                image.src = imageSrc;
+                const imageWindow = window.open("", "_blank", "width=800,height=600");
+                imageWindow.document.write('<div class="centered-image"><img src="' + imageSrc + '" alt="Image"></div>');
+                imageWindow.document.write('<style>.centered-image { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: rgba(0, 0, 0, 0.8); } .centered-image img { max-width: 90%; max-height: 90%; border: 5px solid white; box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); }</style>');
+            }
+    </script>
+</body>
+</html>
